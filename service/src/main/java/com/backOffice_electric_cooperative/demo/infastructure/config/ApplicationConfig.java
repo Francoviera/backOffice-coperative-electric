@@ -8,8 +8,10 @@ import com.backOffice_electric_cooperative.demo.domain.ports.output.ExternalServ
 import com.backOffice_electric_cooperative.demo.infastructure.adapters.ExternalServiceAdapter;
 import com.backOffice_electric_cooperative.demo.infastructure.repositories.JpaClientRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
+@Configuration
 public class ApplicationConfig {
     @Bean
     public ClientService clientService(ClientRepositoryPort clientRepositoryPort,

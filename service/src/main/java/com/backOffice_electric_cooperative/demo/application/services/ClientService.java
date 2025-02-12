@@ -1,5 +1,6 @@
 package com.backOffice_electric_cooperative.demo.application.services;
 
+import com.backOffice_electric_cooperative.demo.domain.models.AdditionalClientInfo;
 import com.backOffice_electric_cooperative.demo.domain.models.Client;
 import com.backOffice_electric_cooperative.demo.domain.ports.input.client.*;
 import org.springframework.stereotype.Service;
@@ -8,18 +9,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientService implements DeleteClient, NewClient, RetriewClient, UpdateClient {
+public class ClientService implements DeleteClient, NewClient, RetriewClient, UpdateClient, GetAdditionalClientInfoUseCase {
 
     private final NewClient newClientImpl;
     private final RetriewClient retriewClientImpl;
     private final UpdateClient updateClientImpl;
     private final DeleteClient deleteClientImpl;
+    private final GetAdditionalClientInfoUseCase getAdditionalClientInfoUseCase;
 
     public ClientService(NewClient newClient, RetriewClient retriewClient, UpdateClient updateClient, DeleteClient deleteClient, GetAdditionalClientInfoUseCase getAdditionalClientInfoUseCase) {
         this.newClientImpl = newClient;
         this.retriewClientImpl = retriewClient;
         this.updateClientImpl = updateClient;
         this.deleteClientImpl = deleteClient;
+        this.getAdditionalClientInfoUseCase= getAdditionalClientInfoUseCase;
     }
 
 
@@ -46,5 +49,10 @@ public class ClientService implements DeleteClient, NewClient, RetriewClient, Up
     @Override
     public List<Client> getAllClients() {
         return retriewClientImpl.getAllClients();
+    }
+
+    @Override
+    public AdditionalClientInfo getAdditionalClientInfo(Long id) {
+        return getAdditionalClientInfoUseCase.getAdditionalClientInfo(id);
     }
 }
