@@ -10,6 +10,6 @@ public interface ClientRepositoryPort {
     Optional<Client> findById(Long id);
     List<Client> findAll();
     Optional<Client> update (Client client);
-    boolean delete(String id);
+    boolean delete(Long id);
 
 }

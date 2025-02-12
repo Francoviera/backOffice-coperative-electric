@@ -1,22 +1,21 @@
 package com.backOffice_electric_cooperative.demo.application.services;
 
 import com.backOffice_electric_cooperative.demo.domain.models.Client;
-import com.backOffice_electric_cooperative.demo.domain.ports.input.client.DeleteClient;
-import com.backOffice_electric_cooperative.demo.domain.ports.input.client.NewClient;
-import com.backOffice_electric_cooperative.demo.domain.ports.input.client.RetriewClient;
-import com.backOffice_electric_cooperative.demo.domain.ports.input.client.UpdateClient;
+import com.backOffice_electric_cooperative.demo.domain.ports.input.client.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class clientService implements DeleteClient, NewClient, RetriewClient, UpdateClient {
+@Service
+public class ClientService implements DeleteClient, NewClient, RetriewClient, UpdateClient {
 
     private final NewClient newClientImpl;
     private final RetriewClient retriewClientImpl;
     private final UpdateClient updateClientImpl;
     private final DeleteClient deleteClientImpl;
 
-    public clientService(NewClient newClient, RetriewClient retriewClient, UpdateClient updateClient, DeleteClient deleteClient) {
+    public ClientService(NewClient newClient, RetriewClient retriewClient, UpdateClient updateClient, DeleteClient deleteClient, GetAdditionalClientInfoUseCase getAdditionalClientInfoUseCase) {
         this.newClientImpl = newClient;
         this.retriewClientImpl = retriewClient;
         this.updateClientImpl = updateClient;
