@@ -19,3 +19,7 @@ spring:
       web-application-type: servlet
 server:
   port: 9090
+security:
+  basic:
+    enable: false  # Deshabilita la seguridad básica
+  ignored: /**     # Ignora todas las rutas
